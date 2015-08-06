@@ -1,5 +1,5 @@
-angular.module("customServices", [])
-	.factory("spService", function($http, $q){
+angular.module("spRest.service", [])
+	.factory("spService", ["$http", "$q", function($http, $q){
 
 		var digestValue = angular.element(document.querySelector("#__REQUESTDIGEST")).val();
 		
@@ -231,52 +231,4 @@ angular.module("customServices", [])
 
 			}
 		};
-	})
-	.factory("dataStorage", function(){
-		//helps reduce repeated calls on the server
-		var data = window.hasOwnProperty || Object.prototype.hasOwnProperty;
-
-
-		return {
-			add:function(name, userData){
-				if(data.hasOwnProperty(name)){
-					return;
-				}else{
-					data[name] = userData;
-				}
-			},
-			remove:function(name){
-				//checks if the property in that object is there and if it is remove it otherwise do nothing
-				if(data.hasOwnProperty(name)){
-					delete data[name];
-				}else{
-					return;
-				}
-			},
-			get:function(name){
-				if(data.hasOwnProperty(name)){
-					return data[name];
-				}else{
-					return;
-				}
-			},
-			isEmpty:function(obj){
-			    if (obj == null) return true;
-
-
-			    if (obj.length > 0)    return false;
-			    if (obj.length === 0)  return true;
-
-
-			    for (var key in obj) {
-			    	if(obj.hasOwnProperty(key)){
-			    		return false;
-			    	}
-			    	
-			    }
-
-			    return true;
-				
-			}
-		};
-	})	
+	}])

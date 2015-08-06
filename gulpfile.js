@@ -6,6 +6,7 @@ var browserify = require('browserify'),
     scsso = require('gulp-csso'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify'),
     buffer = require('vinyl-buffer');
 
 gulp.task('browserify', function () {
@@ -14,6 +15,8 @@ gulp.task('browserify', function () {
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
         // Start piping stream to tasks!
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
 

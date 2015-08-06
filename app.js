@@ -1,8 +1,10 @@
 var angular = require('angular');
 
 //services
+require('./services/pmApp.services');
 require('angular-router-browserify')(angular)
-require('./services/customServices');
+require('./services/dataStorage.service');
+require('./services/spRest.service');
 
 //controllers
 require('./controllers/pmApp.controllers');
@@ -19,14 +21,13 @@ require('./filters/pmApp.filters');
 
 
 angular.module("pmApp", [
-        "customServices",
+        "pmApp.services",
         "pmApp.directives",
         "pmApp.controllers",
-        "pmApp.filters",
-        "ngRoute"
+        "pmApp.filters"
     ])
     .constant("siteLocation", "")
-    .config(function ($routeProvider) {
+    .config(["$routeProvider", function ($routeProvider) {
         //this is setting up the configuration for the application upon launch
 
 
@@ -57,4 +58,4 @@ angular.module("pmApp", [
 
 
 
-    });
+    }]);

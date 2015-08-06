@@ -1,6 +1,6 @@
 //this is the root controller
 angular.module("master.controller", [])
-    .controller("masterCtrl", function ($scope, $route, $location, $q, spService, dataStorage, siteLocation) {
+    .controller("masterCtrl", ["$scope", "$route", "$location", "$q", "spService", "dataStorage", "siteLocation", function ($scope, $route, $location, $q, spService, dataStorage, siteLocation) {
         //this is used to control the main tabs of latest trends and budget volume
 
 
@@ -12,13 +12,16 @@ angular.module("master.controller", [])
         //event listeners
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {
 
-            currentPath = current.originalPath.replace("/", "");
+            if (!angular.isUndefined(current.originalPath)) {
+                currentPath = current.originalPath.replace("/", "");
+                if (!(/archive/g).test(currentPath)) {
+                    selectedCategory = currentPath;
+                } else {
+                    selectedCategory = "volumes";
+                }
 
-            if (!(/archive/g).test(currentPath)) {
-                selectedCategory = currentPath;
-            } else {
-                selectedCategory = "volumes";
             }
+
 
         });
 
@@ -71,4 +74,4 @@ angular.module("master.controller", [])
 
 
 
-    })
+    }])

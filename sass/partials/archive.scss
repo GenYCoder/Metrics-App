@@ -1,0 +1,37 @@
+#archive {
+	#archive-nav{
+		@include subNavBoxModel;
+		.labels {
+			color: $msk_blue;
+			padding-left: 10px;
+			font-size: 13px;
+		}
+		#years, #months {
+			display: inline-block;
+		}
+		#archive-caption{
+			font-weight: bold;
+			font-size: 12px;
+		}
+	}
+	#normal-mode {
+		font-weight: bold;
+		padding: 5px;
+		width: 120px;
+		border-radius: 8px;
+		margin: 0px auto;
+		text-align: center;
+		cursor: pointer;
+		background: $blue3;
+		color: white;
+		font-size: 12px;
+	}
+	#archive-chart{
+		@include tableLayout;
+	}
+	#no-data {
+		text-align: center;
+		color:red;
+		margin-bottom: 15px;
+	}
+}

@@ -1,0 +1,266 @@
+<div id="archive">
+    <div id="archive-nav">
+        <div id="years">
+        	<span id="archive-caption">ARCHIVE:</span><span class="labels">Year</span>
+            <select ng-model="queryYear" ng-change="getData(queryYear, queryMonth)">
+                <option ng-repeat="year in [] | range:startingYear:currentYear track by $index" value="{{year}}" ng-selected="queryYear == year">{{year}}</option>
+            </select>
+        </div>
+        <div id="months">
+        	<span class="labels">Month</span>
+        	<select ng-model="queryMonth" ng-change="getData(queryYear, queryMonth)">
+        		<option ng-repeat="month in months track by $index" value="{{month}}" ng-selected="queryMonth === month">{{month}}</option>
+        	</select>
+        </div>
+    </div>
+    <div id="no-data">{{errorMsg}}</div>
+    <div id="archive-chart" ng-hide="queryYear == null || queryMonth == null || volumeData.length <= 0">
+        <div class="table-container">
+            <div class="table">
+                <div class="rows">
+                    <div class="cells headers">
+                        <span class="col1"></span>
+                    </div>
+                    <div class="cells headers">
+                        <span class="col2">Budget</span>
+                    </div>
+                    <div class="cells headers">
+                        <span class="col3">Actual</span>
+                    </div>
+                    <div class="cells headers">
+                        <span class="col4">Difference</span>
+                    </div>
+                    <div class="cells headers">
+                        <span class="col5">% Difference</span>
+                    </div>
+                </div>
+                <div class="rows underline" ng-repeat="data in volumeData | filter:{'Treatment':'Initial Active Patients'}">
+                    <div class="cells">
+                        <span class="col1 bold">Initial Active Patients</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="table-label">MD Visits</div>
+            <div class="table">
+                <div class="rows highlight" ng-repeat="data in volumeData | filter:{'Treatment':'MD Visits - Manhattan'}">
+                    <div class="cells">
+                        <span class="col1">Manhattan</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows underline" ng-repeat="data in volumeData | filter:{'Treatment':'MD Visits - Regionals'}">
+                    <div class="cells">
+                        <span class="col1">Regionals</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows" ng-repeat="data in volumeData | filter:{'Treatment':'*Total MD Visits'}">
+                    <div class="cells">
+                        <span class="col1 bold">Total</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="table">
+                <div class="rows underline" ng-repeat="data in volumeData | filter:{'Treatment':'Inpatient Days'}">
+                    <div class="cells">
+                        <span class="col1 bold">Inpatient Days</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows" ng-repeat="data in volumeData | filter:{'Treatment':'OR Cases'}">
+                    <div class="cells">
+                        <span class="col1 bold">OR Cases</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="table-label">Chemo Treatments</div>
+            <div class="table">
+                <div class="rows highlight" ng-repeat="data in volumeData | filter:{'Treatment':'Chemo Treatments - Manhattan/Bklyn'}">
+                    <div class="cells">
+                        <span class="col1">Manhattan/Bklyn</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows underline" ng-repeat="data in volumeData | filter:{'Treatment':'Chemo Treatments - Regionals'}">
+                    <div class="cells">
+                        <span class="col1">Regionals</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows" ng-repeat="data in volumeData | filter:{'Treatment':'*Total Chemo Treatments'}">
+                    <div class="cells">
+                        <span class="col1 bold">Total</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <div class="table-label">Rad Onc Treatments</div>
+            <div class="table">
+                <div class="rows highlight" ng-repeat="data in volumeData | filter:{'Treatment':'Rad Onc Treatments - Manhattan'}">
+                    <div class="cells">
+                        <span class="col1">Manhattan</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows underline" ng-repeat="data in volumeData | filter:{'Treatment':'Rad Onc Treatments - Regionals'}">
+                    <div class="cells">
+                        <span class="col1">Regionals</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+                <div class="rows" ng-repeat="data in volumeData | filter:{'Treatment':'*Total Rad Onc Treatments'}">
+                    <div class="cells">
+                        <span class="col1 bold">Total</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col2">{{data.Budget | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col3">{{data.Actual | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col4">{{data.Difference | number}}</span>
+                    </div>
+                    <div class="cells">
+                        <span class="col5">{{data.OData__x0025__x0020_Difference | number:1}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="normal-mode" ng-click="viewNormal()" ng-class="getArchiveClass()">
+        <span>« GO BACK</span>
+    </div>
+</div>

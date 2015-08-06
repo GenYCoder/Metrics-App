@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pmApp" id="ng-app">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Performance Metric App</title>
+    <link rel="stylesheet" href="main.min.css">
+    <!--[if lt IE 8]>
+	<script>
+	document.createElement('ng-include');
+	document.createElement('ng-pluralize');
+	document.createElement('ng-view');
+
+	// Optionally these for CSS
+	document.createElement('ng:include');
+	document.createElement('ng:pluralize');
+	document.createElement('ng:view');
+
+	window.isIE8 = true;
+
+	</script>
+	<![endif]-->
+</head>
+
+<body>
+    <div id="main" ng-controller="masterCtrl" ng-cloak>
+        <div id="header">
+            <span>Performance Metrics</span>
+        </div>
+        <div id="category-nav">
+            <div class="rows">
+                <div class="cell ng-class:getCategoryClass('trends')" ng-click="selectedCategory('trends')">LATEST TRENDS</div>
+                <div class="cell ng-class:getCategoryClass('volumes')" ng-click="selectedCategory('volumes')">{{config.YTDTab.value | uppercase}}</div>
+            </div>
+        </div>
+        <div ng-view></div>
+    </div>
+    <script src="bundle.js"></script>
+</body>
+
+</html>

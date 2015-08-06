@@ -1,0 +1,1 @@
+angular.module("pmApp.controllers", ["master.controller", "budget.controller","image.controller","archive.controller"]);

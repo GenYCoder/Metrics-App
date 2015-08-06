@@ -1,0 +1,70 @@
+@mixin navSelection {
+    color: $blue3;
+    font-weight: bold;
+}
+
+@mixin barSeperator {
+    .bar {
+        padding: 0px 5px;
+        font-weight: normal;
+        color: $msk_med_gray;
+    }
+}
+
+@mixin subNavBoxModel {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    height: 21px;
+}
+
+@mixin tableLayout {
+    .table-container {
+        margin-bottom: 15px;
+        .table-label {
+            font-weight: bold;
+            padding-left: 20px;
+            width: 240px;
+        }
+        .table {
+            display: table;
+            width: $applicationWidth;
+            border-collapse: collapse;
+            .rows {
+                display: table-row;
+            }
+            .cells {
+                display: table-cell;
+                height: 22px;
+            }
+            .cells:last-child {
+                padding-right: 20px;
+            }
+            .headers {
+                text-align: center;
+            }
+            .underline {
+                border-bottom: solid black 1px;
+            }
+            span.col1 {
+                width: 185px;
+                padding-left: 20px;
+            }
+            @for $i from 2 through 5 {
+                span.col#{$i} {
+                    width: 100px;
+                    text-align: right;
+                }
+            }
+            span {
+                display: inline-block;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            .highlight {
+                background: $blue1;
+                background: rgba($blue1, .40);
+            }
+        }
+    }
+}

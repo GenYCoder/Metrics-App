@@ -1,0 +1,48 @@
+@import "modules/msk_colors";
+@import "modules/msk_standards";
+@import "modules/mixins";
+
+$applicationWidth: 700px;
+$defaultCur: pointer;
+
+
+#main {
+	@import "partials/trends";
+	@import "partials/budgetvolumes";
+	@import "partials/archive";
+	width: $applicationWidth;
+	font-family: arial;
+	#header {
+		font-size:26px;
+		margin-bottom: 20px;
+	}
+
+
+	#category-nav {
+		display: table;
+		border-collapse: collapse;
+		width: $applicationWidth;
+		.rows {
+			display: table-row;
+		}
+		.cell {
+			width: 50%;
+			text-align: center;
+			font-size: 13px;
+			cursor: $defaultCur;
+			display: table-cell;
+			border-bottom: solid $msk_blue 1px;
+			padding-top: 7px;
+			padding-bottom: 3px;
+			color: $msk_gray;
+		}
+		.active-category{
+			@include navSelection;
+			border-top: solid $msk_blue 1px;
+			border-right: solid $msk_blue 1px;
+			border-left: solid $msk_blue 1px;
+			border-bottom: none;
+		}
+	}
+
+}

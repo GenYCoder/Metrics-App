@@ -1,6 +1,6 @@
 //this is the root controller
 angular.module("master.controller", [])
-    .controller("masterCtrl", ["$scope", "$route", "$location", "$q", "spService", "dataStorage", "siteLocation", function ($scope, $route, $location, $q, spService, dataStorage, siteLocation) {
+    .controller("master.controller", ["$scope", "$route", "$location", "$q", "spService", "dataStorage", "siteLocation", "activeVolume", function ($scope, $route, $location, $q, spService, dataStorage, siteLocation, activeVolume) {
         //this is used to control the main tabs of latest trends and budget volume
 
 
@@ -8,6 +8,7 @@ angular.module("master.controller", [])
         var selectedCategory = $location.path().replace("/", "") || "trends";
         //will be use to show the budget data and will be share across child controllers
         $scope.config = {};
+        dataStorage.add("selectedVolume", activeVolume); 
 
         //event listeners
         $scope.$on('$routeChangeSuccess', function (event, current, previous) {

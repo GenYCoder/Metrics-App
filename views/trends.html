@@ -5,17 +5,17 @@
         <span ng-repeat="category in trendCategories" ng-class="getTrendClass(category.ID)" ng-click="selectedTrend(category.ID)">{{category.Name | uppercase}}<span class="bar">{{$last ? '' : '| '}}</span></span>
     </div>
     <!-- PAGINATION IS CONTROL BY DIRECTIVE FOR ARROWS -->
-    <div id="image-pagination" image-move ng-class="maxImageLength <= 1 ? 'visible' : ''">
+    <div id="image-pagination" image-move ng-class="maxImageLength <= 1 ? 'invisible' : ''">
         <span id="left-arrow">«</span>
         <span id="right-arrow">»</span>
         <span class="numbers ng-class:getImageClass('img_' + ($index + 1))" ng-repeat="image in images | filter:{'Trend':getSelectedTrend()}" ng-click="selectedImage('img_' + ($index + 1))">{{$index + 1}}</span>
     </div>
-    <div id="image-container">
+    <div id="image-container" ng-class="maxImageLength < 1 ? 'invisible' : ''">
         <div id="img{{$index + 1}}" ng-class="getImageClass('img_' + ($index + 1))" ng-repeat="image in images | filter:{'Trend':getSelectedTrend()}">
-             <img ng-src="https://one.mskcc.org/sites/pub/ha/Performance Metrics Latest Trends/{{image.FileName}}" alt="{{image.Trend}} Image {{$index + 1}}" />
+             <img ng-src="{{image.FileName}}" alt="{{image.Trend}} Image {{$index + 1}}" />
         </div>
     </div>
-    <div id="downloadPDF" ng-click="viewPDF()">
+    <div id="downloadPDF" ng-click="viewPDF()" ng-class="maxImageLength < 1 ? 'invisible' : ''">
     	<span>» DOWNLOAD CATEGORY TO PDF</span>
     </div>
 </div>

@@ -1,5 +1,5 @@
 angular.module("image.controller", [])
-    .controller("imageCtrl", function ($scope, $filter, $location, $timeout, dataStorage, spService, siteLocation) {
+    .controller("image.controller", ["$scope", "$filter", "$location", "$timeout", "dataStorage", "spService", "siteLocation", function ($scope, $filter, $location, $timeout, dataStorage, spService, siteLocation) {
 
         //declaring private variables
         var activeTrend = "Manhattan",
@@ -27,6 +27,7 @@ angular.module("image.controller", [])
                             jsonData[i] = filterData;
                         }
 
+                        //store to global
                         dataStorage.add("trends", jsonData);
 
 
@@ -149,4 +150,4 @@ angular.module("image.controller", [])
 
 
 
-    })
+    }])

@@ -27,6 +27,7 @@ angular.module("pmApp", [
         "pmApp.filters"
     ])
     .constant("siteLocation", "")
+    .constant("activeVolume", "SubA")
     .config(["$routeProvider", function ($routeProvider) {
         //this is setting up the configuration for the application upon launch
 
@@ -35,19 +36,19 @@ angular.module("pmApp", [
         $routeProvider
             .when("/trends", {
                 templateUrl: "views/trends.html",
-                controller: "imageCtrl"
+                controller: "image.controller"
             })
             .when("/volumes", {
                 templateUrl: "views/volumes.html",
-                controller: "budgetCtrl"
+                controller: "budget.controller"
             })
             .when("/archive.SubA", {
                 templateUrl: "views/archive.SubA.html",
-                controller: "archiveCtrl"
+                controller: "archive.controller"
             })
             .when("/archive.SubC", {
                 templateUrl: "views/archive.SubC.html",
-                controller: "archiveCtrl"
+                controller: "archive.controller"
             })
             .when("/404", {
                 templateUrl: "views/404.html"

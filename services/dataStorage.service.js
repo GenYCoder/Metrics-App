@@ -27,6 +27,11 @@ angular.module("dataStorage.service",[])
 
                 return;
             },
+            set: function(name, userData) {
+                if (data.hasOwnProperty(name)) {
+                    data[name] = userData;
+                }
+            },
             isEmpty: function (obj) {
                 if (obj == null) return true;
 

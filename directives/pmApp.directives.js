@@ -1,5 +1,5 @@
 angular.module("pmApp.directives", [])
-    .directive("imageMove", function ($document) {
+    .directive("imageMove", ["$document", function ($document) {
         return {
             link: function (scope) {
 
@@ -28,4 +28,4 @@ angular.module("pmApp.directives", [])
             },
             restrict: "A"
         };
-    });
+    }]);

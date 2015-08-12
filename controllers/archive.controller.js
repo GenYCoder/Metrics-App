@@ -1,8 +1,8 @@
 angular.module("archive.controller", [])
-    .controller("archiveCtrl", function ($scope, $location, $timeout, siteLocation, spService) {
+    .controller("archive.controller", ["$scope", "$location", "$timeout", "siteLocation", "spService", function ($scope, $location, $timeout, siteLocation, spService) {
 
         var currentArchivePath = $location.path().replace("/", "");
-        
+
         //goes by path and list name
         var listNameRoutes = {
             "archive.SubA": "PM Institutional Activity Table",
@@ -41,7 +41,7 @@ angular.module("archive.controller", [])
 
                         //if no data then return an error message
                         if ($scope.volumeData.length === 0) {
-                            $scope.errorMsg = "No data exist for " + $scope.queryMonth + " " + $scope.queryYear;
+                            $scope.errorMsg = "No data exist";
                         } else {
                             $scope.errorMsg = "";
                         }
@@ -69,4 +69,4 @@ angular.module("archive.controller", [])
 
 
 
-    });
+    }]);

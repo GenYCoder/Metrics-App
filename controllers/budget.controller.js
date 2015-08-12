@@ -1,8 +1,7 @@
 angular.module("budget.controller", [])
-    .controller("budgetCtrl", function ($scope, $location, $timeout, dataStorage, spService, siteLocation) {
+    .controller("budget.controller", ["$scope", "$location", "$timeout", "dataStorage", "spService", "siteLocation", function ($scope, $location, $timeout, dataStorage, spService, siteLocation) {
         
-        var selectedVolume = "SubA";
-
+        var selectedVolume = dataStorage.get("selectedVolume");
 
         $scope.volumeData = [];
 
@@ -84,6 +83,7 @@ angular.module("budget.controller", [])
         //changes the view of the volume tab for budget charts
         $scope.selectedVolume = function (category) {
             selectedVolume = category;
+            dataStorage.set("selectedVolume", category);
             $scope.changeModel(category);
         };
 
@@ -111,4 +111,4 @@ angular.module("budget.controller", [])
 
 
 
-    })
+    }])

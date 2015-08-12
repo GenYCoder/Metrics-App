@@ -54,7 +54,7 @@
     background: #377BB7;
     color: white;
     font-size: 12px; }
-  #main .visible {
+  #main .invisible {
     visibility: hidden; }
   #main #budget-volume #volumes-nav {
     margin-top: 15px;
@@ -102,22 +102,23 @@
       #main #budget-volume .table-container .table .cells:last-child {
         padding-right: 20px; }
       #main #budget-volume .table-container .table .headers {
-        text-align: center; }
+        text-align: center;
+        position: relative; }
       #main #budget-volume .table-container .table .underline {
         border-bottom: solid black 1px; }
-      #main #budget-volume .table-container .table span.col1 {
+      #main #budget-volume .table-container .table .col1 {
         width: 185px;
         padding-left: 20px; }
-      #main #budget-volume .table-container .table span.col2 {
+      #main #budget-volume .table-container .table .col2 {
         width: 100px;
         text-align: right; }
-      #main #budget-volume .table-container .table span.col3 {
+      #main #budget-volume .table-container .table .col3 {
         width: 100px;
         text-align: right; }
-      #main #budget-volume .table-container .table span.col4 {
+      #main #budget-volume .table-container .table .col4 {
         width: 100px;
         text-align: right; }
-      #main #budget-volume .table-container .table span.col5 {
+      #main #budget-volume .table-container .table .col5 {
         width: 100px;
         text-align: right; }
       #main #budget-volume .table-container .table span {
@@ -127,19 +128,26 @@
       #main #budget-volume .table-container .table .highlight {
         background: #A3DBF7;
         background: rgba(163, 219, 247, 0.4); }
-  #main #archive #archive-nav {
+  #main #archive #archive-caption {
     margin-top: 15px;
     margin-bottom: 20px;
-    height: 21px; }
+    height: 21px;
+    font-weight: bold;
+    font-size: 12px;
+    vertical-align: bottom; }
+  #main #archive #archive-nav {
+    position: absolute;
+    width: 258px;
+    height: 22px;
+    z-index: 1;
+    top: 0px; }
     #main #archive #archive-nav .labels {
       color: #4D86C5;
       padding-left: 10px;
       font-size: 13px; }
-    #main #archive #archive-nav #years, #main #archive #archive-nav #months {
+    #main #archive #archive-nav #years,
+    #main #archive #archive-nav #months {
       display: inline-block; }
-    #main #archive #archive-nav #archive-caption {
-      font-weight: bold;
-      font-size: 12px; }
   #main #archive #normal-mode {
     font-weight: bold;
     padding: 5px;
@@ -169,22 +177,23 @@
       #main #archive #archive-chart .table-container .table .cells:last-child {
         padding-right: 20px; }
       #main #archive #archive-chart .table-container .table .headers {
-        text-align: center; }
+        text-align: center;
+        position: relative; }
       #main #archive #archive-chart .table-container .table .underline {
         border-bottom: solid black 1px; }
-      #main #archive #archive-chart .table-container .table span.col1 {
+      #main #archive #archive-chart .table-container .table .col1 {
         width: 185px;
         padding-left: 20px; }
-      #main #archive #archive-chart .table-container .table span.col2 {
+      #main #archive #archive-chart .table-container .table .col2 {
         width: 100px;
         text-align: right; }
-      #main #archive #archive-chart .table-container .table span.col3 {
+      #main #archive #archive-chart .table-container .table .col3 {
         width: 100px;
         text-align: right; }
-      #main #archive #archive-chart .table-container .table span.col4 {
+      #main #archive #archive-chart .table-container .table .col4 {
         width: 100px;
         text-align: right; }
-      #main #archive #archive-chart .table-container .table span.col5 {
+      #main #archive #archive-chart .table-container .table .col5 {
         width: 100px;
         text-align: right; }
       #main #archive #archive-chart .table-container .table span {

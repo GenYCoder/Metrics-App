@@ -11,6 +11,7 @@
     }
 }
 
+
 @mixin subNavBoxModel {
     margin-top: 15px;
     margin-bottom: 20px;
@@ -41,16 +42,17 @@
             }
             .headers {
                 text-align: center;
+                position: relative;
             }
             .underline {
                 border-bottom: solid black 1px;
             }
-            span.col1 {
+            .col1 {
                 width: 185px;
                 padding-left: 20px;
             }
             @for $i from 2 through 5 {
-                span.col#{$i} {
+                .col#{$i} {
                     width: 100px;
                     text-align: right;
                 }
